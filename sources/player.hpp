@@ -1,32 +1,39 @@
 #ifndef P
 #define P
 
+
+
+#pragma once
 #include <string>
-#include <stdio.h>
+#include <iostream>
+#include <vector>
+#include "card.hpp"
+using namespace std;
 
 namespace ariel{
-
-
-
-class Player{
-    private:
-
+    class Player{
+        private:
         std::string name;
-        //we need it for part 2
-        // int stacksize;
-        // int cardtaken;
-
-    public:
-
+        int cardsTaken = 0;
+        int winnings = 0;
+        vector<Card> cStack;   
         
-        Player(std::string name);
 
-        std::string getName();
-
-        int stacksize();
-
-        int cardesTaken();   
-
-};
+        public:
+        Player();
+        Player(string name);
+        std::string getName()const;
+        int stacksize();    
+        int cardesTaken();  
+        int getWinnings();
+        void increaseWinnings();
+        void increaseCradsTaken();
+        void increaseCardsTakenDraw();
+        void increaseCardsTakenByOne();
+        void addCardToStack(Card card);
+        Card playCard();
+    };
 }
+
 #endif 
+
