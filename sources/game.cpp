@@ -128,7 +128,8 @@ void Game::playTurn(){
 
     string state = pl1.getName()+" played "+ cp1.toString() +"; and  "+
                 pl2.getName()+" played "+cp2.toString() + ". ";
-    
+    int ties = 0;
+    int i =0;
     if (res == -1){
         pl2.increaseCradsTaken();
         pl2.increaseWinnings();
@@ -145,8 +146,6 @@ void Game::playTurn(){
     }
     
     else{
-        int ties = 0;
-        int i =0;
         while(res == 0){
             state = state + ". Draw. ";
             ties++;
@@ -177,21 +176,30 @@ void Game::playTurn(){
                 pl2.getName()+" played "+cp22.toString();
         }
 
-        draws = draws + ties;
-        i=1;
-        if (res == 1){
-            pl1.increaseCradsTaken();
-            while(i <= ties){pl1.increaseCardsTakenDraw();increaseRounds();i++;}
-            gameLog.push_back(state+". "+pl1.getName()+" wins.");
-            pl1.increaseWinnings();
-            return;
-        }
-        else if (res == -1){
-            pl2.increaseCradsTaken();
-            while(i <= ties){ pl2.increaseCardsTakenDraw();increaseRounds(); i++; }
-            gameLog.push_back(state+". "+pl2.getName()+" wins.");
-            pl2.increaseWinnings();
-            return;
-        }
+
+        
+    }
+    
+    draws = draws + ties;
+    i=1;
+    if (res == 1){
+        pl1.increaseCradsTaken();
+        while(i <= ties){pl1.increaseCardsTakenDraw();increaseRounds();i++;}
+        gameLog.push_back(state+". "+pl1.getName()+" wins.");
+        pl1.increaseWinnings();
+        return;
+    }
+    else if (res == -1){
+        pl2.increaseCradsTaken();
+        while(i <= ties){ pl2.increaseCardsTakenDraw();increaseRounds(); i++; }
+        gameLog.push_back(state+". "+pl2.getName()+" wins.");
+        pl2.increaseWinnings();
+        return;
     }
 }
+    
+        
+
+
+
+
