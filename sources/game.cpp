@@ -54,13 +54,14 @@ int Game::turnResult(Card card1, Card card2){
     else if (card1.getValue() == 1 && card2.getValue() != 2){    
         return 1;
     }
-    else if (card1.getValue() != 2 && card2.getValue() == 1){    
-        return -1;
-    }
+
     else if(card1.getValue() > card2.getValue()){    
         return 1;
     }
     else if (card1.getValue() < card2.getValue()){
+        return -1;
+    }
+    else if (card1.getValue() != 2 && card2.getValue() == 1){    
         return -1;
     }
     else{
